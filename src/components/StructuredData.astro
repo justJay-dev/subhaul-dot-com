@@ -1,202 +1,215 @@
 ---
 interface Props {
-  type: 'homepage' | 'service' | 'route';
-  data?: {
-    from?: string;
-    to?: string;
-    route?: string;
-  };
+    type: 'homepage' | 'service' | 'route';
+    data?: {
+        from?: string;
+        to?: string;
+        route?: string;
+    };
 }
 
 const { type, data } = Astro.props;
-const siteUrl = 'https://www.haulco.com';
+const siteUrl = 'https://www.subhaul.com';
 
 // Organization Schema (used on all pages)
 const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "MovingCompany",
-  "@id": `${siteUrl}/#organization`,
-  "name": "Haul",
-  "alternateName": "Haul Co",
-  "url": siteUrl,
-  "logo": {
-    "@type": "ImageObject",
-    "url": `${siteUrl}/logo.svg`,
-    "width": "512",
-    "height": "512"
-  },
-  "description": "Professional moving company providing reliable, stress-free moving services across the United States.",
-  "telephone": "+1-555-HAUL-123",
-  "email": "hello@haulco.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "US"
-  },
-  "sameAs": [
-    "https://twitter.com/haulco",
-    "https://www.facebook.com/haulco",
-    "https://www.linkedin.com/company/haulco"
-  ],
-  "areaServed": {
-    "@type": "Country",
-    "name": "United States"
-  },
-  "priceRange": "$$",
-  "slogan": "Make your best move yet",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Moving Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Residential Moving",
-          "description": "Professional residential moving services for homes and apartments"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Long Distance Moving",
-          "description": "Interstate moving services across the United States"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Packing Services",
-          "description": "Professional packing and unpacking services"
-        }
-      }
-    ]
-  }
+    '@context': 'https://schema.org',
+    '@type': 'MovingCompany',
+    '@id': `${siteUrl}/#organization`,
+    name: 'Haul',
+    alternateName: 'Haul Co',
+    url: siteUrl,
+    logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/logo.svg`,
+        width: '512',
+        height: '512',
+    },
+    description:
+        'Professional moving company providing reliable, stress-free moving services across the United States.',
+    telephone: '+1-555-HAUL-123',
+    email: 'hello@subhaul.com',
+    address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'US',
+    },
+    sameAs: [
+        'https://twitter.com/subhaul',
+        'https://www.facebook.com/subhaul',
+        'https://www.linkedin.com/company/subhaul',
+    ],
+    areaServed: {
+        '@type': 'Country',
+        name: 'United States',
+    },
+    priceRange: '$$',
+    slogan: 'Make your best move yet',
+    hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Moving Services',
+        itemListElement: [
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Residential Moving',
+                    description:
+                        'Professional residential moving services for homes and apartments',
+                },
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Long Distance Moving',
+                    description: 'Interstate moving services across the United States',
+                },
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Packing Services',
+                    description: 'Professional packing and unpacking services',
+                },
+            },
+        ],
+    },
 };
 
 // Homepage Schema
-const homepageSchema = type === 'homepage' ? {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Haul - Make your best move yet",
-  "url": siteUrl,
-  "description": "At Haul, we make moving simple, stress-free, and reliable. Get your free, no-obligation estimate and let's get you moving!",
-  "publisher": {
-    "@type": "Organization",
-    "@id": `${siteUrl}/#organization`
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": `${siteUrl}/moving/{search_term_string}`
-    },
-    "query-input": "required name=search_term_string"
-  }
-} : null;
+const homepageSchema =
+    type === 'homepage'
+        ? {
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Haul - Make your best move yet',
+              url: siteUrl,
+              description:
+                  "At Haul, we make moving simple, stress-free, and reliable. Get your free, no-obligation estimate and let's get you moving!",
+              publisher: {
+                  '@type': 'Organization',
+                  '@id': `${siteUrl}/#organization`,
+              },
+              potentialAction: {
+                  '@type': 'SearchAction',
+                  target: {
+                      '@type': 'EntryPoint',
+                      urlTemplate: `${siteUrl}/moving/{search_term_string}`,
+                  },
+                  'query-input': 'required name=search_term_string',
+              },
+          }
+        : null;
 
 // Service Schema for moving routes
-const serviceSchema = type === 'route' && data?.from && data?.to ? {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Moving Service",
-  "name": `Moving from ${data.from} to ${data.to}`,
-  "description": `Professional moving services from ${data.from} to ${data.to}. Get instant quotes, flexible scheduling, and reliable movers.`,
-  "provider": {
-    "@type": "MovingCompany",
-    "@id": `${siteUrl}/#organization`
-  },
-  "areaServed": [
-    {
-      "@type": "State",
-      "name": data.from
-    },
-    {
-      "@type": "State",
-      "name": data.to
-    }
-  ],
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "priceCurrency": "USD",
-    "priceSpecification": {
-      "@type": "PriceSpecification",
-      "priceCurrency": "USD"
-    },
-    "url": `${siteUrl}${data.route}`
-  }
-} : null;
+const serviceSchema =
+    type === 'route' && data?.from && data?.to
+        ? {
+              '@context': 'https://schema.org',
+              '@type': 'Service',
+              serviceType: 'Moving Service',
+              name: `Moving from ${data.from} to ${data.to}`,
+              description: `Professional moving services from ${data.from} to ${data.to}. Get instant quotes, flexible scheduling, and reliable movers.`,
+              provider: {
+                  '@type': 'MovingCompany',
+                  '@id': `${siteUrl}/#organization`,
+              },
+              areaServed: [
+                  {
+                      '@type': 'State',
+                      name: data.from,
+                  },
+                  {
+                      '@type': 'State',
+                      name: data.to,
+                  },
+              ],
+              offers: {
+                  '@type': 'Offer',
+                  availability: 'https://schema.org/InStock',
+                  priceCurrency: 'USD',
+                  priceSpecification: {
+                      '@type': 'PriceSpecification',
+                      priceCurrency: 'USD',
+                  },
+                  url: `${siteUrl}${data.route}`,
+              },
+          }
+        : null;
 
 // BreadcrumbList Schema for route pages
-const breadcrumbSchema = type === 'route' && data?.route ? {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": siteUrl
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Moving Services",
-      "item": `${siteUrl}/moving`
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": `${data.from} to ${data.to}`,
-      "item": `${siteUrl}${data.route}`
-    }
-  ]
-} : null;
+const breadcrumbSchema =
+    type === 'route' && data?.route
+        ? {
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                  {
+                      '@type': 'ListItem',
+                      position: 1,
+                      name: 'Home',
+                      item: siteUrl,
+                  },
+                  {
+                      '@type': 'ListItem',
+                      position: 2,
+                      name: 'Moving Services',
+                      item: `${siteUrl}/moving`,
+                  },
+                  {
+                      '@type': 'ListItem',
+                      position: 3,
+                      name: `${data.from} to ${data.to}`,
+                      item: `${siteUrl}${data.route}`,
+                  },
+              ],
+          }
+        : null;
 
 // FAQ Schema for route pages
-const faqSchema = type === 'route' && data?.from && data?.to ? {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": `How much does it cost to move from ${data.from} to ${data.to}?`,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": `The cost of moving from ${data.from} to ${data.to} varies based on factors such as the size of your home, distance, and additional services needed. Contact Haul for a free, accurate quote.`
-      }
-    },
-    {
-      "@type": "Question",
-      "name": `How long does it take to move from ${data.from} to ${data.to}?`,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": `Moving times vary depending on the distance and size of your move. Our professional movers will provide you with an accurate timeline when you get your quote.`
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are your movers licensed and insured?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, all Haul movers are fully licensed, insured, and professionally trained to handle your belongings with care."
-      }
-    }
-  ]
-} : null;
+const faqSchema =
+    type === 'route' && data?.from && data?.to
+        ? {
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
+                  {
+                      '@type': 'Question',
+                      name: `How much does it cost to move from ${data.from} to ${data.to}?`,
+                      acceptedAnswer: {
+                          '@type': 'Answer',
+                          text: `The cost of moving from ${data.from} to ${data.to} varies based on factors such as the size of your home, distance, and additional services needed. Contact Haul for a free, accurate quote.`,
+                      },
+                  },
+                  {
+                      '@type': 'Question',
+                      name: `How long does it take to move from ${data.from} to ${data.to}?`,
+                      acceptedAnswer: {
+                          '@type': 'Answer',
+                          text: `Moving times vary depending on the distance and size of your move. Our professional movers will provide you with an accurate timeline when you get your quote.`,
+                      },
+                  },
+                  {
+                      '@type': 'Question',
+                      name: 'Are your movers licensed and insured?',
+                      acceptedAnswer: {
+                          '@type': 'Answer',
+                          text: 'Yes, all Haul movers are fully licensed, insured, and professionally trained to handle your belongings with care.',
+                      },
+                  },
+              ],
+          }
+        : null;
 
 // Combine all schemas
 const schemas = [
-  organizationSchema,
-  homepageSchema,
-  serviceSchema,
-  breadcrumbSchema,
-  faqSchema
+    organizationSchema,
+    homepageSchema,
+    serviceSchema,
+    breadcrumbSchema,
+    faqSchema,
 ].filter(Boolean);
 ---
 
-{schemas.map((schema) => (
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-))}
+{schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}

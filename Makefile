@@ -13,10 +13,10 @@ ship-dev:
 	@echo "Running TSC to confirm this will build..."
 	tsc -p tsconfig.json
 	@echo "Deploying..."
-	bash patch.sh arm-06.velociraptor-opah.ts.net .ci/dev/.env
+	bash patch.sh arm-07.velociraptor-opah.ts.net .ci/dev/.env
 	@echo "Patching complete!"
 	@echo "Building..."
-	bash build-and-deploy.sh arm-06.velociraptor-opah.ts.net
+	bash build-and-deploy.sh arm-07.velociraptor-opah.ts.net
 
 ship-prod:
 	@echo "Running TSC to confirm this will build..."

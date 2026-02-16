@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 REMOTE_HOST="ubuntu@$1"
-REMOTE_PATH="/home/ubuntu/dot-com-astro"
+REMOTE_PATH="/home/ubuntu/subhaul-dot-com"
 ENV_FILE="${2:-.env}"
 
 # list of directories to omit (adjust as needed)
@@ -19,8 +19,8 @@ for dir in "${EXCLUDES[@]}"; do
 done
 
 # zip existing directory on remote host before syncing new copy
-echo "Backing up existing dot-com-astro directory..."
-ssh -i ~/.ssh/id_rsa_ubuntu "$REMOTE_HOST" "cd ~/ && zip -r dot-com-astro.zip dot-com-astro && echo 'Backup completed'"
+echo "Backing up existing subhaul-dot-com directory..."
+ssh -i ~/.ssh/id_rsa_ubuntu "$REMOTE_HOST" "cd ~/ && zip -r subhaul-dot-com.zip subhaul-dot-com && echo 'Backup completed'"
 
 # remove the old directory
 ssh -i ~/.ssh/id_rsa_ubuntu "$REMOTE_HOST" "rm -rf ${REMOTE_PATH}"

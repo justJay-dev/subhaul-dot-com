@@ -11,101 +11,58 @@ import { navItems } from '@/lib/nav';
                     <img src="/goat_logo_dark.png" alt="Haul Logo" class="h-8 w-auto logo-dark" />
                 </a>
                 <p class="text-muted-foreground text-sm leading-relaxed">
-                    Making moving simple, stress-free, and reliable with AI-powered logistics and
-                    expert care.
+                    We're looking for professional, reliable carriers to join our elite
+                    network—partner with Haul to access a massive customer base, advanced logistics
+                    tools, and dedicated support while we handle the sales and technology so you can
+                    focus on moving.
                 </p>
-                <!--book a move button -->
+                <!--Join today button -->
                 <div class="mt-6">
                     <a
-                        href="/book-a-move"
+                        href={`${import.meta.env.PUBLIC_SP_UI_URL}/onboarding`}
                         class="inline-block bg-primary text-primary-foreground font-medium rounded-md px-5 py-3 text-sm hover:bg-primary/90 transition-colors"
                     >
-                        Book a Move
+                        Join Today.
                     </a>
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 flex-1 lg:ml-12">
-                {
-                    navItems
-                        .filter((item) => !item.button)
-                        .map((item) => (
-                            <div>
-                                <h3 class="font-bold text-sm uppercase tracking-wider mb-6">
-                                    {item.title}
-                                </h3>
-                                <ul class="space-y-4">
-                                    {item.children ? (
-                                        item.children.map((child) => (
-                                            <li>
-                                                <a
-                                                    href={child.href}
-                                                    class="text-muted-foreground hover:text-primary text-sm transition-colors"
-                                                >
-                                                    {child.title}
-                                                </a>
-                                            </li>
-                                        ))
-                                    ) : (
-                                        <li>
-                                            <a
-                                                href={item.href}
-                                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
-                                            >
-                                                {item.title}
-                                            </a>
-                                        </li>
-                                    )}
-                                </ul>
-                            </div>
-                        ))
-                }
-
-                <div>
-                    <h3 class="font-bold text-sm uppercase tracking-wider mb-6">Support</h3>
-                    <ul class="space-y-4">
-                        <li>
-                            <a
-                                href="/contact-us"
-                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
-                            >
-                                Contact Us
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/compliance/privacy-policy"
-                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
-                            >
-                                Privacy Policy
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/compliance/terms-of-service"
-                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
-                            >
-                                Terms of Service
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href={import.meta.env.PUBLIC_OS_UI_URL + '/login'}
-                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
-                            >
-                                Employee Login
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div>
+                <h3 class="font-bold text-sm uppercase tracking-wider mb-6">Support</h3>
+                <ul class="space-y-4">
+                    <li>
+                        <a
+                            href="/compliance/privacy-policy"
+                            class="text-muted-foreground hover:text-primary text-sm transition-colors"
+                        >
+                            Privacy Policy
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/compliance/terms-of-service"
+                            class="text-muted-foreground hover:text-primary text-sm transition-colors"
+                        >
+                            Terms of Service
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href={import.meta.env.PUBLIC_SP_UI_URL + '/login'}
+                            class="text-muted-foreground hover:text-primary text-sm transition-colors"
+                        >
+                            Employee Login
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <div
-            class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground"
-        >
-            <p>&copy; {new Date().getFullYear()} HaulCo. All rights reserved.</p>
-        </div>
+    <div
+        class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground"
+    >
+        <p>&copy; {new Date().getFullYear()} Haul, Co. All rights reserved.</p>
     </div>
 </footer>
 

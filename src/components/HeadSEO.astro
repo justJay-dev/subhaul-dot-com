@@ -1,24 +1,25 @@
 ---
-import "@/styles/global.css";
-import "@/styles/fonts.css";
+import '@/styles/global.css';
+import '@/styles/fonts.css';
 
 interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-  ogImage?: URL | undefined;
-  keywords?: string;
+    title?: string | undefined;
+    description?: string | undefined;
+    ogImage?: URL | undefined;
+    keywords?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 if (Astro.props.ogImage === undefined) {
-  Astro.props.ogImage = new URL("og-image.png", canonicalURL);
+    Astro.props.ogImage = new URL('logo_white.png', canonicalURL);
 }
 
 const { title, description, ogImage, keywords } = Astro.props;
 
 // Default keywords if none provided
-const defaultKeywords = "moving company, movers, relocation services, professional movers, moving services, household moving";
+const defaultKeywords =
+    'moving company, movers, relocation services, professional movers, moving services, household moving';
 const keywordsMeta = keywords || defaultKeywords;
 ---
 

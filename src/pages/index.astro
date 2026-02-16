@@ -1,15 +1,32 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/dot-com/Hero.astro';
-import HowItWorks from '@/components/dot-com/HowItWorks.astro';
-import About from '@/components/dot-com/About.astro';
-import Testimonials from '@/components/testimonials/Testimonals.astro';
 import CTABanner from '@/components/CTABanner.astro';
+const benefits = [
+    {
+        title: 'Consistent Volume',
+        description:
+            'Access a steady stream of high-quality moving jobs optimized for your fleet and routes.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>',
+    },
+    {
+        title: 'Fast Payments',
+        description:
+            'Get paid quickly and reliably through our secure digital payment platform. No more waiting for checks.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+    },
+    {
+        title: 'Advanced Tools',
+        description:
+            'Use our proprietary carrier dashboard to manage jobs, track shipments, and optimize your operations.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>',
+    },
+];
 ---
 
 <BaseLayout
-    title="HaulCo - Make your best move yet"
-    description="At HaulCo, we make moving simple, stress-free, and reliable. Get your free, no-obligation estimate and let's get you moving!"
+    title="Haul - Make your best move yet"
+    description="At Haul, we make moving simple, stress-free, and reliable. Get your free, no-obligation estimate and let's get you moving!"
     keywords="professional moving company, movers, relocation services, moving services, interstate movers, long distance moving, residential movers"
     structuredDataType="homepage"
 >
@@ -19,27 +36,61 @@ import CTABanner from '@/components/CTABanner.astro';
                 <div
                     class="bg-gradient-to-b from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-800 relative w-full flex items-center justify-center"
                 >
-                    <video
-                        src="/haul-website.webm"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        aria-hidden="true"
+                    <img
+                        src="/haul-light-trailer.jpg"
+                        alt="Haul Light Trailer"
                         class="absolute inset-0 w-full h-full object-cover z-0 opacity-20 dark:opacity-10"
-                    ></video>
+                    />
                     <div class="relative z-10 w-full">
                         <Hero />
                     </div>
                 </div>
-                <Testimonials />
-                <HowItWorks />
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl font-bold mb-4">Partner Benefits</h2>
+                    <p class="text-muted-foreground text-lg">
+                        We provide our partners with the tools, technology, and support they need to
+                        succeed.
+                    </p>
+                </div>
+
+                <div class="container max-w-6xl">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {
+                            benefits.map((benefit) => (
+                                <div class="bg-card p-8 rounded-2xl border border-border shadow-sm">
+                                    <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+                                        {benefit.icon ? (
+                                            <Fragment set:html={benefit.icon} />
+                                        ) : (
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                                <polyline points="22 4 12 14.01 9 11.01" />
+                                            </svg>
+                                        )}
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-3">{benefit.title}</h3>
+                                    <p class="text-muted-foreground leading-relaxed">
+                                        {benefit.description}
+                                    </p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
                 <CTABanner
-                    title="Ready to make your best move yet?"
-                    description="Join thousands of happy customers who have experienced the HaulCo difference. Get your instant quote in minutes."
-                    primaryButtonText="Get Started"
-                    secondaryButtonText="Learn More"
-                    secondaryButtonHref="/about-us"
+                    title="Ready to join our network?"
+                    description="Apply today to become a Haul certified carrier and start receiving jobs in your area."
+                    primaryButtonText="Become a Carrier"
                 />
             </div>
         </section>

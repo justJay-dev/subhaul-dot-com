@@ -5,4 +5,4 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-ssh -i ~/.ssh/id_rsa_ubuntu ubuntu@$1 "cd /home/ubuntu/dot-com-astro && docker compose build && docker compose up -d"
+ssh -i ~/.ssh/id_rsa_ubuntu ubuntu@$1 "cd /home/ubuntu/subhaul-dot-com && docker compose build && docker compose up -d"

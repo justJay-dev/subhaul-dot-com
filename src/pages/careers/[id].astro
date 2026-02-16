@@ -1,0 +1,83 @@
+---
+import JobLayout from '@/layouts/JobLayout.astro';
+
+export function getStaticPaths() {
+    return [
+        {
+            params: { id: 'moving-coordinator' },
+            props: {
+                title: 'Moving Coordinator',
+                department: 'Operations',
+                location: 'Remote / Austin, TX',
+                type: 'Full-time',
+                description:
+                    'Join our operations team to help coordinate seamless moves for our customers across the country.',
+            },
+        },
+        {
+            params: { id: 'customer-service-rep' },
+            props: {
+                title: 'Customer Service Representative',
+                department: 'Support',
+                location: 'Remote',
+                type: 'Full-time',
+                description:
+                    'Be the voice of HaulCo and help our customers have the best moving experience possible.',
+            },
+        },
+        {
+            params: { id: 'lead-driver' },
+            props: {
+                title: 'Lead Driver & Mover',
+                department: 'Logistics',
+                location: 'Birmingham, AL',
+                type: 'Full-time',
+                description:
+                    "Lead a team of movers and ensure our customers' belongings are transported safely and efficiently.",
+            },
+        },
+    ];
+}
+
+const { title, department, location, type, description } = Astro.props;
+---
+
+<JobLayout
+    title={title}
+    department={department}
+    location={location}
+    type={type}
+    description={description}
+>
+    <h2>About the Role</h2>
+    <p>
+        As a {title} at HaulCo, you will play a critical role in our mission to redefine the moving industry.
+        We're looking for someone who is passionate about customer service, highly organized, and thrives
+        in a fast-paced environment.
+    </p>
+
+    <h2>What You'll Do</h2>
+    <ul>
+        <li>Manage end-to-end communication with customers during their moving journey.</li>
+        <li>Coordinate with logistics partners to ensure timely pickups and deliveries.</li>
+        <li>Solve complex problems on the fly to keep moves on track.</li>
+        <li>Contribute to improving our internal processes and customer experience.</li>
+    </ul>
+
+    <h2>What We're Looking For</h2>
+    <ul>
+        <li>2+ years of experience in a similar role (logistics or customer support preferred).</li>
+        <li>Excellent verbal and written communication skills.</li>
+        <li>Ability to multitask and prioritize in a high-pressure environment.</li>
+        <li>A positive, "can-do" attitude and a passion for helping people.</li>
+    </ul>
+
+    <h2>Benefits</h2>
+    <ul>
+        <li>Competitive salary and performance bonuses.</li>
+        <li>Comprehensive health, dental, and vision insurance.</li>
+        <li>401(k) matching and financial wellness programs.</li>
+        <li>Flexible PTO and remote work options.</li>
+        <li>Opportunities for rapid career growth in a fast-growing startup.</li>
+    </ul>
+</JobLayout>

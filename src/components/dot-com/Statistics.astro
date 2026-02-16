@@ -1,0 +1,23 @@
+---
+const stats = [
+  {
+    quantity: '7B+',
+    description: 'Data Points Analyzed',
+  },
+  {
+    quantity: '25+',
+    description: 'Years of Experience',
+  },
+];
+---
+
+<section id="statistics">
+  <div class="grid grid-cols-2">
+    {stats.map((stat) => (
+      <div class="space-y-2 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-primary">{stat.quantity}</h2>
+        <p class="text-xl text-card-foreground">{stat.description}</p>
+      </div>
+    ))}
+  </div>
+</section>

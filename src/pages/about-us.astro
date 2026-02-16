@@ -1,0 +1,120 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CTABanner from '@/components/CTABanner.astro';
+
+const founders = [
+    {
+        name: 'Jack',
+        role: 'Chief Executive Officer',
+        bio: "A proven strategic leader with extensive experience in the logistics industry. Former VP of Strategy at UniGroup and President of Trans Advantage, Jack brings deep industry expertise as a CPA and CFA to drive HaulCo's vision forward.",
+        image: '/jack.png',
+    },
+    {
+        name: 'Bryson',
+        role: 'Chief Operating Officer',
+        bio: 'An operations and scale expert with multiple successful startup exits under his belt. Former VP of Technology at UniGroup, Bryson leverages his extensive experience to ensure HaulCo operates with precision, efficiency, and scalability.',
+        image: '/bryson.png',
+    },
+    {
+        name: 'Jay',
+        role: 'Chief Technology Officer',
+        bio: "A tech inventor and builder who led large-scale tech integrations and digital transformation as Principal Engineer at UniGroup. Jay brings his passion for innovation and deep technical expertise to architect HaulCo's cutting-edge platform.",
+        image: '/jay.png',
+    },
+];
+---
+
+<BaseLayout title="About Us | HaulCo">
+    <PageHero
+        title="Moving the Industry"
+        highlightedText="Forward"
+        description="We're a team of innovators, logisticians, and dreamers dedicated to making the most stressful day of your life, the easiest."
+    />
+
+    <!-- Mission Statement -->
+    <section class="py-20 bg-muted">
+        <div class="container max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
+                    <div class="space-y-4 text-lg text-foreground leading-relaxed">
+                        <p>
+                            HaulCo was founded with a simple but ambitious goal: to disrupt the
+                            traditional moving industry and eliminate the inefficiencies, waste, and
+                            stress that have plagued it for decades.
+                        </p>
+                        <p>
+                            By leveraging cutting-edge AI technology and a data-driven approach,
+                            we've built a platform that streamlines every aspect of the moving
+                            process. From instant, accurate quoting to real-time tracking and
+                            seamless coordination, we're bringing transparency and reliability to
+                            household goods moving.
+                        </p>
+                        <p class="font-semibold text-foreground">
+                            At HaulCo, we're not just moving boxes—we're moving the entire industry
+                            into the future.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                        <img
+                            src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop"
+                            alt="Team collaborating"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-8 rounded-2xl shadow-xl hidden md:block"
+                    >
+                        <p class="text-4xl font-bold mb-1">100%</p>
+                        <p class="text-sm font-medium uppercase tracking-wider">Customer Focused</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Founders -->
+    <section class="py-24 md:py-32">
+        <div class="container">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Meet the Founders</h2>
+                <p class="text-lg text-muted-foreground">
+                    The leadership team behind the revolution in household logistics.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {
+                    founders.map((founder) => (
+                        <div class="group bg-card border border-border rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300">
+                            <div class="aspect-[4/5] overflow-hidden">
+                                <img
+                                    src={founder.image}
+                                    alt={founder.name}
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold mb-1">{founder.name}</h3>
+                                <p class="text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+                                    {founder.role}
+                                </p>
+                                <p class="text-muted-foreground leading-relaxed">{founder.bio}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <CTABanner
+        title="Ready to experience the future?"
+        description="Join thousands of happy customers who have moved with HaulCo. Get your instant quote today."
+        primaryButtonText="Book a Move"
+    />
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import TestimonialCard from '@/components/testimonials/TestimonialCard.astro';
+import { testimonials } from '@/lib/data.ts';
+---
+
+<section>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- <h2 id="testimonials-title" class="text-3xl font-extrabold text-gray-900 text-center mb-12">
+            What Our Customers Are Saying
+        </h2> -->
+        <h2 class="text-3xl md:text-4xl font-bold text-center my-12">
+            What our <span class="text-primary bg-clip-text">Customers</span>
+            Say
+        </h2>
+
+        <div
+            class="embla overflow-hidden cursor-grab active:cursor-grabbing"
+            id="testimonial-carousel"
+        >
+            <div class="embla__container flex ml-[-2rem]">
+                {
+                    testimonials.map((testimonial) => (
+                        <div class="embla__slide flex-shrink-0 w-[300px] sm:w-[400px] pl-8">
+                            <TestimonialCard {...testimonial} />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .embla__container {
+            display: flex;
+            backface-visibility: hidden;
+            touch-action: pan-y;
+        }
+        .embla__slide {
+            flex: 0 0 auto;
+            min-width: 0;
+        }
+    </style>
+
+    <script>
+        import EmblaCarousel from 'embla-carousel';
+        import Autoplay from 'embla-carousel-autoplay';
+
+        const emblaNode = document.getElementById('testimonial-carousel');
+
+        if (emblaNode) {
+            EmblaCarousel(
+                emblaNode,
+                {
+                    loop: true,
+                    align: 'center',
+                    skipSnaps: false,
+                    dragFree: false,
+                },
+                [Autoplay({ delay: 4000, stopOnInteraction: true })],
+            );
+        }
+    </script>
+</section>

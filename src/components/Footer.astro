@@ -1,0 +1,175 @@
+---
+import { navItems } from '@/lib/nav';
+---
+
+<footer class="bg-background border-t pt-16 pb-8" role="contentinfo">
+    <div class="container max-w-7xl mx-auto px-4">
+        <div class="flex flex-col lg:flex-row justify-between gap-12 mb-16">
+            <div class="lg:max-w-sm">
+                <a href="/" class="inline-block mb-6" aria-label="Haul homepage">
+                    <img src="/goat_logo_white.png" alt="Haul Logo" class="h-8 w-auto logo-white" />
+                    <img src="/goat_logo_dark.png" alt="Haul Logo" class="h-8 w-auto logo-dark" />
+                </a>
+                <p class="text-muted-foreground text-sm leading-relaxed">
+                    Making moving simple, stress-free, and reliable with AI-powered logistics and
+                    expert care.
+                </p>
+                <!--book a move button -->
+                <div class="mt-6">
+                    <a
+                        href="/book-a-move"
+                        class="inline-block bg-primary text-primary-foreground font-medium rounded-md px-5 py-3 text-sm hover:bg-primary/90 transition-colors"
+                    >
+                        Book a Move
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 flex-1 lg:ml-12">
+                {
+                    navItems
+                        .filter((item) => !item.button)
+                        .map((item) => (
+                            <div>
+                                <h3 class="font-bold text-sm uppercase tracking-wider mb-6">
+                                    {item.title}
+                                </h3>
+                                <ul class="space-y-4">
+                                    {item.children ? (
+                                        item.children.map((child) => (
+                                            <li>
+                                                <a
+                                                    href={child.href}
+                                                    class="text-muted-foreground hover:text-primary text-sm transition-colors"
+                                                >
+                                                    {child.title}
+                                                </a>
+                                            </li>
+                                        ))
+                                    ) : (
+                                        <li>
+                                            <a
+                                                href={item.href}
+                                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
+                                            >
+                                                {item.title}
+                                            </a>
+                                        </li>
+                                    )}
+                                </ul>
+                            </div>
+                        ))
+                }
+
+                <div>
+                    <h3 class="font-bold text-sm uppercase tracking-wider mb-6">Support</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <a
+                                href="/contact-us"
+                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
+                            >
+                                Contact Us
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/compliance/privacy-policy"
+                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
+                            >
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/compliance/terms-of-service"
+                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
+                            >
+                                Terms of Service
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href={import.meta.env.PUBLIC_OS_UI_URL + '/login'}
+                                class="text-muted-foreground hover:text-primary text-sm transition-colors"
+                            >
+                                Employee Login
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground"
+        >
+            <p>&copy; {new Date().getFullYear()} HaulCo. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="hidden fixed inset-x-0 bottom-0 z-50 p-3 sm:p-4">
+    <div
+        class="mx-auto max-w-4xl rounded-2xl shadow-lg bg-primary text-white px-4 py-3 sm:px-6 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+    >
+        <p class="text-sm leading-relaxed">
+            We use cookies for simple analytics to improve your experience. See our
+            <a
+                href="/cookie-policy"
+                target="_blank"
+                class="underline underline-offset-4 hover:no-underline"
+            >
+                Cookie Policy
+            </a>.
+        </p>
+        <div class="flex items-center gap-2">
+            <button
+                id="cookie-dismiss"
+                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-9 px-3"
+                aria-label="Dismiss cookie notice"
+            >
+                Got it
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Cookie Banner functionality
+    const storageKey = 'haulCookieConsentGiven';
+    const banner = document.getElementById('cookie-banner');
+    const dismissBtn = document.getElementById('cookie-dismiss');
+
+    function checkCookieConsent() {
+        try {
+            const stored = localStorage.getItem(storageKey);
+            if (stored !== 'true' && banner) {
+                banner.classList.remove('hidden');
+            }
+        } catch {
+            // localStorage may be blocked; show banner
+            if (banner) {
+                banner.classList.remove('hidden');
+            }
+        }
+    }
+
+    function dismissBanner() {
+        try {
+            localStorage.setItem(storageKey, 'true');
+        } catch {}
+        if (banner) {
+            banner.classList.add('hidden');
+        }
+    }
+
+    // Initialize on load
+    checkCookieConsent();
+
+    // Add event listener
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', dismissBanner);
+    }
+</script>

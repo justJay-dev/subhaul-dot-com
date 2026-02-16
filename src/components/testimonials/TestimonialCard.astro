@@ -1,0 +1,41 @@
+---
+interface Props {
+    quote: string;
+    avatarUrl: string;
+    name: string;
+    rating?: number;
+}
+const { quote, avatarUrl, name, rating = 5 } = Astro.props;
+---
+
+<article
+    class="bg-card h-full border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between"
+>
+    <div>
+        <div class="flex mb-4">
+            {
+                [...Array(5)].map((_, i) => (
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill={i < rating ? 'currentColor' : 'none'}
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class={i < rating ? 'text-yellow-400' : 'text-gray-300'}
+                    >
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                ))
+            }
+        </div>
+        <p class="text-card-foreground italic mb-4">"{quote}"</p>
+    </div>
+    <div class="flex items-center">
+        <img src={avatarUrl} alt={name} class="w-12 h-12 rounded-full mr-4" />
+        <span class="text-card-foreground font-semibold">{name}</span>
+    </div>
+</article>

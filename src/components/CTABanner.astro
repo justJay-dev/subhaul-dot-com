@@ -1,0 +1,66 @@
+---
+interface Props {
+    title?: string;
+    description?: string;
+    primaryButtonText?: string;
+    primaryButtonHref?: string;
+    secondaryButtonText?: string;
+    secondaryButtonHref?: string;
+    className?: string;
+}
+
+const {
+    title = 'Ready to start your move?',
+    description = 'Get an instant, transparent quote in less than 2 minutes. No hidden fees, no stress.',
+    primaryButtonText = 'Get My Instant Quote',
+    primaryButtonHref = '/book-a-move',
+    secondaryButtonText,
+    secondaryButtonHref,
+    className = '',
+} = Astro.props;
+---
+
+<section class={`py-24 ${className}`}>
+    <div class="container max-w-6xl">
+        <div
+            class="bg-card border border-border rounded-[2.5rem] p-8 md:p-16 text-center relative overflow-hidden shadow-xl"
+        >
+            <!-- Decorative background elements -->
+            <div
+                class="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
+            >
+            </div>
+            <div
+                class="absolute bottom-0 left-0 -mb-20 -ml-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"
+            >
+            </div>
+
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                    {title}
+                </h2>
+                <p class="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                    {description}
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a
+                        href={primaryButtonHref}
+                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90 h-14 px-10 text-lg shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
+                    >
+                        {primaryButtonText}
+                    </a>
+                    {
+                        secondaryButtonText && secondaryButtonHref && (
+                            <a
+                                href={secondaryButtonHref}
+                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-14 px-10 text-lg"
+                            >
+                                {secondaryButtonText}
+                            </a>
+                        )
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

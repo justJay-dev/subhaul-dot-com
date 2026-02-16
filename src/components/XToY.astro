@@ -1,0 +1,83 @@
+---
+interface Props {
+  from: string;
+  to: string;
+}
+
+const { from, to } = Astro.props;
+
+const normalizeState = (state: string) => {
+  return state
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
+const fromNormalized = normalizeState(from);
+const toNormalized = normalizeState(to);
+---
+
+<section class="w-full" aria-labelledby="main-heading">
+  <div class="flex flex-col items-center justify-center space-y-4">
+    <div class="relative z-10 w-full p-4 md:p-8 lg:p-16">
+      <article class="max-w-5xl mx-auto bg-card backdrop-blur-lg border rounded-lg shadow-sm">
+        <header class="flex flex-col space-y-1.5 p-6">
+          <h1 id="main-heading" class="text-2xl md:text-3xl font-bold text-center">
+            Planning a move from {fromNormalized} to {toNormalized}?
+          </h1>
+        </header>
+        <div class="p-6 pt-0 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div id="left" class="flex flex-col mb-6 md:col-span-2">
+            <h2 class="text-xl font-semibold mb-3">Professional Moving Services You Can Trust</h2>
+            <p class="text-lg">
+              Haul is here to make your relocation seamless and stress-free.
+            </p>
+            <p class="text-lg mt-4">
+              Our transparent pricing and dedicated customer support mean you can trust us
+              to be with you every step of the way. Whether you're moving a small apartment
+              or a large family home, Haul has the resources and expertise to get you there.
+            </p>
+            
+            <h2 class="text-xl font-semibold mt-6 mb-3">Why Choose Haul for Your {fromNormalized} to {toNormalized} Move?</h2>
+            <ul class="list-disc list-inside space-y-2 text-lg">
+              <li>Competitive, transparent pricing with no hidden fees</li>
+              <li>Professional, insured movers with years of experience</li>
+              <li>Flexible scheduling to fit your timeline</li>
+              <li>Real-time tracking and updates throughout your move</li>
+              <li>Dedicated customer support from start to finish</li>
+            </ul>
+            
+            <p class="text-lg mt-4">
+              Don't let the stress of moving weigh you down. Choose Haul for your{' '}
+              {fromNormalized} to {toNormalized} move and experience the difference of a
+              truly customer-focused moving service.
+            </p>
+            <p class="text-lg mt-4">
+              Get started today and take the first step towards your new adventure!
+            </p>
+          </div>
+          <aside
+            id="right"
+            class="flex flex-col items-center justify-center mb-6 md:col-span-1"
+          >
+            <img
+              src="/deliveries.png"
+              alt={`Professional moving services from ${fromNormalized} to ${toNormalized}`}
+              class="w-full h-auto rounded-lg mt-4"
+              loading="lazy"
+              width="400"
+              height="300"
+            />
+          </aside>
+          <a 
+            href="/book-a-move" 
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/80 h-11 px-8 md:col-span-3 mt-4 mx-auto"
+            aria-label={`Get a quote for moving from ${fromNormalized} to ${toNormalized}`}
+          >
+            Get your instant, no-obligation quote today!
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

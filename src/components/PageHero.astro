@@ -1,0 +1,40 @@
+---
+interface Props {
+    title: string;
+    highlightedText?: string;
+    description?: string;
+    className?: string;
+    align?: 'left' | 'center';
+    maxWidth?: string;
+}
+
+const {
+    title,
+    highlightedText,
+    description,
+    className = '',
+    align = 'left',
+    maxWidth = 'max-w-6xl',
+} = Astro.props;
+---
+
+<section class={`py-16 md:py-24 ${className}`}>
+    <div class="px-4 sm:px-6 lg:px-8">
+        <div
+            class={`${maxWidth} mx-auto bg-card border border-border rounded-3xl px-8 py-8 md:py-12 shadow-sm ${align === 'center' ? 'text-center' : ''}`}
+        >
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+                {title}
+                {highlightedText && <span class="text-primary">{highlightedText}</span>}
+            </h1>
+            {
+                description && (
+                    <p class="text-lg md:text-xl text-muted-foreground leading-relaxed">
+                        {description}
+                    </p>
+                )
+            }
+            <slot />
+        </div>
+    </div>
+</section>

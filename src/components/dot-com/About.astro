@@ -1,0 +1,35 @@
+---
+import Statistics from './Statistics.astro';
+---
+
+<section id="about" class="container py-24 sm:py-32" aria-labelledby="about-heading">
+    <div class="bg-lander-dark bg-card border rounded-lg py-12">
+        <div class="px-6 flex flex-col-reverse md:flex-row gap-8 md:gap-12">
+            <article class="flex flex-col justify-between">
+                <div class="pb-6">
+                    <h2 id="about-heading" class="text-white text-3xl md:text-4xl font-bold">
+                        <span class="text-primary bg-clip-text">About </span>
+                        Haul
+                    </h2>
+                    <p class="text-xl text-white mt-4">
+                        Haul was founded by three industry-leading executives united by a common
+                        goal: to disrupt the traditional moving industry and eliminate
+                        inefficiencies and waste.
+                    </p>
+                    <p class="text-xl text-white mt-4">
+                        Driven by innovation and leveraging cutting-edge AI technology, Haul is
+                        reshaping the household goods moving experience. Our smart, data-driven
+                        approach streamlines processes, enhances accuracy, and ensures your move is
+                        seamless, transparent, and cost-effective.
+                    </p>
+                    <p class="text-xl text-white mt-4">
+                        At Haul, we're not just moving boxes, we're moving the entire industry
+                        forward.
+                    </p>
+                </div>
+
+                <Statistics />
+            </article>
+        </div>
+    </div>
+</section>

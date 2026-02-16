@@ -1,0 +1,152 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+interface Props {
+    title: string;
+    department: string;
+    location: string;
+    type: string;
+    description?: string;
+}
+
+const { title, department, location, type, description } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Careers at HaulCo`} description={description}>
+    <div class="py-16 md:py-24">
+        <div class="container max-w-4xl">
+            <div class="mb-12">
+                <a
+                    href="/careers"
+                    class="inline-flex items-center gap-2 text-primary font-semibold hover:underline mb-8"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg
+                    >
+                    Back to Careers
+                </a>
+
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span
+                        class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider"
+                    >
+                        {department}
+                    </span>
+                    <span
+                        class="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-bold uppercase tracking-wider"
+                    >
+                        {location}
+                    </span>
+                    <span
+                        class="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-bold uppercase tracking-wider"
+                    >
+                        {type}
+                    </span>
+                </div>
+
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-8">
+                    {title}
+                </h1>
+
+                <div class="flex flex-wrap gap-4">
+                    <a
+                        href="#apply"
+                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8"
+                    >
+                        Apply for this position
+                    </a>
+                    <button
+                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 px-8"
+                    >
+                        Share Job
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="prose prose-lg dark:prose-invert max-w-none prose-headings:text-card-foreground prose-p:text-card-foreground prose-li:text-card-foreground prose-strong:text-card-foreground prose-blockquote:text-card-foreground prose-blockquote:border-primary prose-blockquote:italic prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80"
+            >
+                <slot />
+            </div>
+
+            <div
+                id="apply"
+                class="mt-20 p-8 md:p-12 bg-card border border-border rounded-2xl shadow-sm"
+            >
+                <h2 class="text-3xl font-bold mb-4">Apply for this position</h2>
+                <p class="text-muted-foreground mb-8">
+                    Fill out the form below and our recruiting team will get back to you as soon as
+                    possible.
+                </p>
+
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium" for="first-name">First Name</label>
+                        <input
+                            type="text"
+                            id="first-name"
+                            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                            placeholder="Jane"
+                            required
+                        />
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium" for="last-name">Last Name</label>
+                        <input
+                            type="text"
+                            id="last-name"
+                            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                            placeholder="Doe"
+                            required
+                        />
+                    </div>
+                    <div class="space-y-2 md:col-span-2">
+                        <label class="text-sm font-medium" for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                            placeholder="jane@example.com"
+                            required
+                        />
+                    </div>
+                    <div class="space-y-2 md:col-span-2">
+                        <label class="text-sm font-medium" for="resume">Resume / CV</label>
+                        <input
+                            type="file"
+                            id="resume"
+                            class="flex w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90 cursor-pointer"
+                            required
+                        />
+                    </div>
+                    <div class="space-y-2 md:col-span-2">
+                        <label class="text-sm font-medium" for="message"
+                            >Cover Letter / Message</label
+                        >
+                        <textarea
+                            id="message"
+                            rows="4"
+                            class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                            placeholder="Tell us why you're a great fit for HaulCo..."></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button
+                            type="submit"
+                            class="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8"
+                        >
+                            Submit Application
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</BaseLayout>

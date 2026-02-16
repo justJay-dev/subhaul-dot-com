@@ -1,0 +1,37 @@
+---
+import PartnerLayout from '@/layouts/PartnerLayout.astro';
+
+const benefits = [
+    {
+        title: 'Streamlined Move-Ins',
+        description:
+            'Reduce building wear and tear with professional movers who follow your specific loading dock and elevator rules.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>',
+    },
+    {
+        title: 'Tenant Satisfaction',
+        description:
+            'Provide a premium amenity by offering your residents a reliable, high-quality moving partner they can trust.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>',
+    },
+    {
+        title: 'Compliance & Insurance',
+        description:
+            "Rest easy knowing every move is fully insured and compliant with your building's COI requirements.",
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    },
+];
+---
+
+<PartnerLayout
+    title="Property"
+    highlightedText="Managers"
+    description="Simplify the move-in and move-out process for your residents while protecting your property's assets."
+    summaryTitle="Better Moves for Better Buildings"
+    summaryText="Managing a property is complex enough without the chaos of uncoordinated moves. HaulCo partners with property managers to create a standardized, professional moving experience. We work with your team to understand building protocols, ensuring that every move is efficient, safe, and respectful of other residents."
+    summaryImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+    benefits={benefits}
+    ctaTitle="Optimize your building's logistics"
+    ctaDescription="Contact us to set up a preferred partner program for your residential or commercial property."
+    ctaButtonText="Contact Partnerships"
+/>

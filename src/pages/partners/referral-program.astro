@@ -1,0 +1,37 @@
+---
+import PartnerLayout from '@/layouts/PartnerLayout.astro';
+
+const benefits = [
+    {
+        title: 'Earn on Every Move',
+        description:
+            'Receive a competitive commission for every successful move booked through your unique referral link.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+    },
+    {
+        title: 'Customer Discounts',
+        description:
+            'Give your friends and family a special discount on their first move, making it a win-win for everyone.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',
+    },
+    {
+        title: 'Real-Time Tracking',
+        description:
+            'Monitor your referrals and earnings through our easy-to-use dashboard with instant notifications.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+    },
+];
+---
+
+<PartnerLayout
+    title="Referral"
+    highlightedText="Program"
+    description="Share the HaulCo experience with your network and get rewarded for every successful booking."
+    summaryTitle="Spread the Word, Get Rewarded"
+    summaryText="We believe that great service should be shared. Our referral program is designed to reward our most loyal customers and fans for helping us grow. Whether you're a happy customer or a professional with a large network, you can earn significant rewards by introducing people to the easiest way to move."
+    summaryImage="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2064&auto=format&fit=crop"
+    benefits={benefits}
+    ctaTitle="Start referring today"
+    ctaDescription="Join our referral program in seconds and start earning rewards for every move you inspire."
+    ctaButtonText="Join Program"
+/>

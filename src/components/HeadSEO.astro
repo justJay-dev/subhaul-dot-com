@@ -1,0 +1,83 @@
+---
+import "@/styles/global.css";
+import "@/styles/fonts.css";
+
+interface Props {
+  title?: string | undefined;
+  description?: string | undefined;
+  ogImage?: URL | undefined;
+  keywords?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+if (Astro.props.ogImage === undefined) {
+  Astro.props.ogImage = new URL("og-image.png", canonicalURL);
+}
+
+const { title, description, ogImage, keywords } = Astro.props;
+
+// Default keywords if none provided
+const defaultKeywords = "moving company, movers, relocation services, professional movers, moving services, household moving";
+const keywordsMeta = keywords || defaultKeywords;
+---
+
+<meta charset="utf-8" />
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Preconnect to external domains for performance -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+<link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+<!-- Preload critical assets -->
+<link rel="preload" href={ogImage} as="image" />
+
+<link rel="canonical" href={canonicalURL} />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/logo.png" />
+<link rel="manifest" href="/manifest.json" />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywordsMeta} />
+<meta name="author" content="Haul" />
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="language" content="English" />
+<meta name="revisit-after" content="7 days" />
+<meta name="rating" content="general" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={title} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Haul" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={title} />
+<meta name="twitter:site" content="@haulco" />
+<meta name="twitter:creator" content="@haulco" />
+
+<!-- Additional SEO Meta Tags -->
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Haul" />

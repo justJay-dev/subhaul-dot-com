@@ -1,0 +1,89 @@
+---
+import HeadSEO from '@/components/HeadSEO.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
+import StructuredData from '@/components/StructuredData.astro';
+
+interface Props {
+    title?: string | undefined;
+    description?: string | undefined;
+    ogImage?: URL | undefined;
+    structuredDataType?: 'homepage' | 'service' | 'route';
+    structuredDataProps?: any;
+    keywords?: string;
+}
+
+const { title, description, ogImage, structuredDataType, structuredDataProps, keywords } =
+    Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <HeadSEO title={title} description={description} ogImage={ogImage} keywords={keywords} />
+        <GoogleAnalytics />
+        <StructuredData type={structuredDataType || 'homepage'} data={structuredDataProps} />
+    </head>
+    <body class="bg-background min-h-screen font-sans antialiased">
+        <!-- Skip to main content link for accessibility -->
+        <a
+            href="#main-content"
+            class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-md"
+        >
+            Skip to main content
+        </a>
+
+        <div class="flex flex-col min-h-screen relative">
+            <!-- Background grid for light mode -->
+            <div class="absolute inset-0 -z-10 w-full h-full light-mode-bg">
+                <img
+                    alt="background"
+                    src="/square-alt-grid.svg"
+                    class="w-full h-full object-cover [mask-image:radial-gradient(75%_75%_at_center,white,transparent)] opacity-90"
+                />
+            </div>
+
+            <Header />
+            <main class="flex-1" id="main-content">
+                <slot />
+            </main>
+            <Footer />
+        </div>
+
+        <style>
+            /* Show background only in light mode */
+            .light-mode-bg {
+                display: none;
+            }
+
+            html:not(.dark) .light-mode-bg {
+                display: block;
+            }
+        </style>
+
+        <script is:inline>
+            function updateLogos() {
+                const isDark = document.documentElement.classList.contains('dark');
+                const whiteLogos = document.querySelectorAll('.logo-white');
+                const darkLogos = document.querySelectorAll('.logo-dark');
+
+                whiteLogos.forEach((logo) => {
+                    logo.style.display = isDark ? 'block' : 'none';
+                });
+                darkLogos.forEach((logo) => {
+                    logo.style.display = isDark ? 'none' : 'block';
+                });
+            }
+
+            // Update on page load
+            updateLogos();
+
+            // Watch for theme changes
+            const observer = new MutationObserver(updateLogos);
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['class'],
+            });
+        </script>
+    </body>
+</html>

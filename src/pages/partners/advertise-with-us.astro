@@ -1,0 +1,37 @@
+---
+import PartnerLayout from '@/layouts/PartnerLayout.astro';
+
+const benefits = [
+    {
+        title: 'Targeted Audience',
+        description:
+            'Reach thousands of customers actively planning a move—the perfect time for home services, insurance, and retail offers.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+    },
+    {
+        title: 'Premium Placement',
+        description:
+            'Get your brand in front of users through our booking flow, email notifications, and customer dashboard.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+    },
+    {
+        title: 'Data-Driven Insights',
+        description:
+            'Receive detailed reports on campaign performance, click-through rates, and customer engagement metrics.',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+    },
+];
+---
+
+<PartnerLayout
+    title="Advertise"
+    highlightedText="With Us"
+    description="Connect your brand with high-intent customers during one of the most significant life transitions: moving home."
+    summaryTitle="Reach Customers When It Matters Most"
+    summaryText="Moving is a period of high spending and new beginnings. By advertising with HaulCo, you can reach a captive audience of homeowners and renters who are actively looking for new services, products, and solutions for their new homes. Our platform offers unique integration opportunities that go beyond traditional display ads."
+    summaryImage="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop"
+    benefits={benefits}
+    ctaTitle="Ready to grow your brand?"
+    ctaDescription="Contact our advertising team to discuss custom campaign options and media kits."
+    ctaButtonText="Contact Ad Sales"
+/>

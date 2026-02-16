@@ -1,0 +1,31 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import { buttonVariants } from "@/components/ui/button";
+---
+
+<BaseLayout
+  title="404 - Page Not Found | Haul"
+  description="The page you're looking for doesn't exist. Return to Haul's homepage to explore our professional moving services."
+  keywords="404, page not found, Haul moving services"
+>
+  <article class="mt-32 flex flex-col items-center justify-center px-8">
+    <p class="text-muted-foreground text-sm" aria-label="Error code">404</p>
+    <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+      Page not found
+    </h1>
+    <p class="mb-4 leading-7 [&:not(:first-child)]:mt-6">
+      Sorry, we couldn't find the page you're looking for. Let's get you back on track.
+    </p>
+    <nav aria-label="Error navigation">
+      <a 
+        href="/" 
+        rel="noreferrer" 
+        class={buttonVariants()}
+        aria-label="Return to homepage"
+      > 
+        Go back home
+      </a>
+    </nav>
+  </article>
+</BaseLayout>

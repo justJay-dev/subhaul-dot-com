@@ -1,0 +1,100 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CTABanner from '@/components/CTABanner.astro';
+import SummarySection from '@/components/SummarySection.astro';
+
+interface Props {
+    title: string;
+    highlightedText?: string;
+    description: string;
+    summaryTitle: string;
+    summaryText: string;
+    summaryImage: string;
+    benefits: {
+        title: string;
+        description: string;
+        icon?: string;
+    }[];
+    ctaTitle?: string;
+    ctaDescription?: string;
+    ctaButtonText?: string;
+}
+
+const {
+    title,
+    highlightedText,
+    description,
+    summaryTitle,
+    summaryText,
+    summaryImage,
+    benefits,
+    ctaTitle = 'Ready to partner with us?',
+    ctaDescription = 'Join our network and start growing your business today.',
+    ctaButtonText = 'Apply Now',
+} = Astro.props;
+---
+
+<BaseLayout title={`${title} | HaulCo Partners`}>
+    <PageHero
+        title={title}
+        highlightedText={highlightedText}
+        description={description}
+        maxWidth="max-w-6xl"
+    />
+
+    <SummarySection title={summaryTitle} text={summaryText} image={summaryImage} imageAlt={title} />
+
+    <!-- Benefits Section -->
+    <section class="py-24 bg-muted/50 border-y border-border">
+        <div class="container max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold mb-4">Partner Benefits</h2>
+                <p class="text-muted-foreground text-lg">
+                    We provide our partners with the tools, technology, and support they need to
+                    succeed.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {
+                    benefits.map((benefit) => (
+                        <div class="bg-card p-8 rounded-2xl border border-border shadow-sm">
+                            <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+                                {benefit.icon ? (
+                                    <Fragment set:html={benefit.icon} />
+                                ) : (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                        <polyline points="22 4 12 14.01 9 11.01" />
+                                    </svg>
+                                )}
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">{benefit.title}</h3>
+                            <p class="text-muted-foreground leading-relaxed">
+                                {benefit.description}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <CTABanner
+        title={ctaTitle}
+        description={ctaDescription}
+        primaryButtonText={ctaButtonText}
+        secondaryButtonText="Contact Us"
+        secondaryButtonHref="/contact-us"
+    />
+</BaseLayout>

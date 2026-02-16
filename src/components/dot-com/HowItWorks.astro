@@ -1,0 +1,64 @@
+---
+import Icons from './Icons.astro';
+
+const features = [
+    {
+        icon: 'chart',
+        title: 'Enter your move details',
+        description:
+            'Quickly provide us with your moving specifics through our intuitive platform.',
+    },
+    {
+        icon: 'magnifier',
+        title: 'Get your price',
+        description:
+            'Instantly receive a transparent and accurate quote tailored to your unique needs.',
+    },
+    {
+        icon: 'lightbulb',
+        title: 'Complete your AI powered survey',
+        description:
+            'Our advanced AI technology guides you through an effortless virtual survey, ensuring precision and convenience.',
+    },
+    {
+        icon: 'map',
+        title: 'Relax, and let us handle the rest',
+        description:
+            'Sit back with confidence, knowing our expert movers will take care of every detail, from packing to delivery.',
+    },
+];
+---
+
+<section
+    id="howItWorks"
+    class="container text-center py-24 sm:py-32"
+    aria-labelledby="how-it-works-heading"
+>
+    <h2 id="how-it-works-heading" class="text-3xl md:text-4xl font-bold">
+        How It <span class="text-primary bg-clip-text">Works </span>
+        Step-by-Step Guide
+    </h2>
+    <p class="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
+        We're here to help every step along the way!
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+            features.map((feature, index) => (
+                <article class="bg-lander-dark bg-card rounded-lg border text-white shadow-sm">
+                    <div class="flex flex-col space-y-1.5 p-6">
+                        <h3 class="text-2xl font-semibold leading-none tracking-tight grid gap-4 place-items-center">
+                            <Icons
+                                name={feature.icon}
+                                class="w-14 fill-accent dark:fill-primary"
+                                aria-hidden="true"
+                            />
+                            <span class="sr-only">Step {index + 1}:</span> {feature.title}
+                        </h3>
+                    </div>
+                    <div class="p-6 pt-0">{feature.description}</div>
+                </article>
+            ))
+        }
+    </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/dot-com/Hero.astro';
+import HowItWorks from '@/components/dot-com/HowItWorks.astro';
+import About from '@/components/dot-com/About.astro';
+import Testimonials from '@/components/testimonials/Testimonals.astro';
+import CTABanner from '@/components/CTABanner.astro';
+---
+
+<BaseLayout
+    title="HaulCo - Make your best move yet"
+    description="At HaulCo, we make moving simple, stress-free, and reliable. Get your free, no-obligation estimate and let's get you moving!"
+    keywords="professional moving company, movers, relocation services, moving services, interstate movers, long distance moving, residential movers"
+    structuredDataType="homepage"
+>
+    <article class="flex-1">
+        <section class="w-full" aria-label="Hero section">
+            <div class="flex flex-col items-center justify-center space-y-4">
+                <div
+                    class="bg-gradient-to-b from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-800 relative w-full flex items-center justify-center"
+                >
+                    <video
+                        src="/haul-website.webm"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        aria-hidden="true"
+                        class="absolute inset-0 w-full h-full object-cover z-0 opacity-20 dark:opacity-10"
+                    ></video>
+                    <div class="relative z-10 w-full">
+                        <Hero />
+                    </div>
+                </div>
+                <Testimonials />
+                <HowItWorks />
+                <CTABanner
+                    title="Ready to make your best move yet?"
+                    description="Join thousands of happy customers who have experienced the HaulCo difference. Get your instant quote in minutes."
+                    primaryButtonText="Get Started"
+                    secondaryButtonText="Learn More"
+                    secondaryButtonHref="/about-us"
+                />
+            </div>
+        </section>
+    </article>
+</BaseLayout>

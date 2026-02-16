@@ -1,0 +1,134 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CTABanner from '@/components/CTABanner.astro';
+
+const services = [
+    {
+        title: 'Residential Moving',
+        description:
+            'Stress-free home relocation services tailored to your needs. From apartments to family estates.',
+        href: '/services/residential-moving',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+        image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop',
+    },
+    {
+        title: 'Commercial Moving',
+        description:
+            'Efficient office and business relocation services to minimize downtime and maximize productivity.',
+        href: '/services/commercial-moving',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+        image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
+    },
+    {
+        title: 'Long Distance Moving',
+        description:
+            'Reliable cross-country moving services with real-time tracking and dedicated support.',
+        href: '/services/long-distance-moving',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
+        image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop',
+    },
+    {
+        title: 'Packing Services',
+        description:
+            'Professional packing and unpacking services using high-quality materials to protect your valuables.',
+        href: '/services/packing-services',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>',
+        image: 'https://images.unsplash.com/photo-1520038410233-7141be7e6f97?q=80&w=2070&auto=format&fit=crop',
+    },
+    {
+        title: 'Storage Solutions',
+        description:
+            'Secure, climate-controlled storage options for short-term or long-term needs.',
+        href: '/services/storage-solutions',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16v-2"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>',
+        image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop',
+    },
+];
+---
+
+<BaseLayout title="Our Services | HaulCo">
+    <PageHero
+        title="Our Moving"
+        highlightedText="Services"
+        description="Comprehensive logistics solutions powered by AI. Whether you're moving across the street or across the country, we've got you covered."
+        maxWidth="max-w-6xl"
+    />
+
+    <section class="pb-24">
+        <div class="container max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    services.map((service) => (
+                        <a
+                            href={service.href}
+                            class="group bg-card border border-border rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+                        >
+                            <div class="aspect-video overflow-hidden relative">
+                                <img
+                                    src={service.image}
+                                    alt={service.title}
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                    <span class="text-white font-bold flex items-center">
+                                        Learn More
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="ml-2 group-hover:translate-x-1 transition-transform"
+                                        >
+                                            <path d="m9 18 6-6-6-6" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col">
+                                <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                                    <Fragment set:html={service.icon} />
+                                </div>
+                                <h3 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                                    {service.title}
+                                </h3>
+                                <p class="text-muted-foreground leading-relaxed mb-6 flex-1">
+                                    {service.description}
+                                </p>
+                                <div class="pt-4 border-t border-border flex items-center text-primary font-bold text-sm">
+                                    Explore Service
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="18"
+                                        height="18"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="3"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="ml-1 group-hover:translate-x-1 transition-transform"
+                                    >
+                                        <path d="m9 18 6-6-6-6" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <CTABanner
+        title="Not sure which service you need?"
+        description="Our moving experts are here to help you plan the perfect relocation. Contact us for a free consultation."
+        primaryButtonText="Get a Quote"
+        className="pt-0"
+    />
+</BaseLayout>

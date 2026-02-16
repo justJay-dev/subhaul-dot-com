@@ -1,0 +1,29 @@
+{
+  "name": "SubHaul - Professional Moving Network",
+  "short_name": "SubHaul",
+  "description": "At SubHaul we strive to connect customers with the best moving companies in their area. Our platform allows users to easily find and compare moving services, read reviews, and book their move with confidence. Whether you're moving across town or across the country, SubHaul is here to help you every step of the way.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": [
+    "business",
+    "lifestyle"
+  ],
+  "lang": "en-US",
+  "dir": "ltr"
+}

@@ -1,0 +1,134 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CTABanner from '@/components/CTABanner.astro';
+
+const faqCategories = [
+    {
+        title: 'General Questions',
+        faqs: [
+            {
+                question: 'What is HaulCo?',
+                answer: 'HaulCo is a technology-driven moving platform that uses AI to streamline household logistics. We provide accurate quotes, real-time tracking, and professional moving services to make your transition as smooth as possible.',
+            },
+            {
+                question: 'How do I get a quote?',
+                answer: 'You can get an instant quote by clicking the "Book a Move" button in our navigation bar. Simply enter your pickup and delivery locations, along with a few details about your move, and our AI will generate a transparent price for you.',
+            },
+            {
+                question: 'Are you a licensed moving company?',
+                answer: 'Yes, HaulCo is fully licensed and insured. We work with a network of vetted, professional carriers who meet our high standards for safety and service quality.',
+            },
+        ],
+    },
+    {
+        title: 'Booking & Pricing',
+        faqs: [
+            {
+                question: 'How far in advance should I book?',
+                answer: 'We recommend booking at least 2-4 weeks in advance, especially during peak moving season (May-September). However, our platform can often accommodate last-minute moves depending on availability.',
+            },
+            {
+                question: 'Are there any hidden fees?',
+                answer: 'No. One of our core missions is transparency. The price you see in your quote is the price you pay, provided the inventory and move details remain the same.',
+            },
+            {
+                question: 'What payment methods do you accept?',
+                answer: 'We accept all major credit cards, as well as secure bank transfers. Payment is typically handled through our secure online portal.',
+            },
+        ],
+    },
+    {
+        title: 'Moving Day',
+        faqs: [
+            {
+                question: 'Do I need to be present during the move?',
+                answer: 'Yes, either you or a designated representative (over 18) must be present at both the pickup and delivery locations to sign the necessary paperwork and oversee the process.',
+            },
+            {
+                question: 'Do you offer packing services?',
+                answer: 'Yes! We offer full-service packing and unpacking options. You can add these services to your move during the booking process.',
+            },
+            {
+                question: 'What happens if something gets damaged?',
+                answer: 'While we take every precaution to protect your belongings, accidents can happen. HaulCo provides standard valuation coverage, and we also offer additional protection plans for peace of mind.',
+            },
+        ],
+    },
+    {
+        title: 'Safety & Trust',
+        faqs: [
+            {
+                question: 'How do you vet your movers?',
+                answer: 'All movers in our network undergo rigorous background checks, must maintain high performance ratings, and are fully licensed and insured according to federal regulations.',
+            },
+            {
+                question: 'Is my move insured?',
+                answer: 'Yes, every move includes basic liability coverage. We also offer premium protection plans that provide full replacement value for your belongings for added peace of mind.',
+            },
+            {
+                question: 'What is your safety record?',
+                answer: 'We pride ourselves on a safety record that is significantly better than the industry average, thanks to our AI-driven carrier matching and strict quality control standards.',
+            },
+        ],
+    },
+];
+---
+
+<BaseLayout title="Frequently Asked Questions | HaulCo">
+    <PageHero
+        title="Frequently Asked"
+        highlightedText="Questions"
+        description="Everything you need to know about moving with HaulCo. Can't find what you're looking for? Contact our support team."
+    />
+
+    <section class="pb-24">
+        <div class="container max-w-6xl">
+            <div class="grid md:grid-cols-2 gap-12">
+                {
+                    faqCategories.map((category) => (
+                        <div>
+                            <h2 class="text-2xl font-bold mb-6 pb-2 border-b border-border">
+                                {category.title}
+                            </h2>
+                            <div class="space-y-4">
+                                {category.faqs.map((faq) => (
+                                    <details class="group bg-card border border-border rounded-xl overflow-hidden transition-all duration-300 open:shadow-md">
+                                        <summary class="flex items-center justify-between p-6 cursor-pointer list-none font-semibold text-lg hover:text-primary transition-colors">
+                                            {faq.question}
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="20"
+                                                height="20"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="transition-transform duration-300 group-open:rotate-180 opacity-50"
+                                            >
+                                                <path d="m6 9 6 6 6-6" />
+                                            </svg>
+                                        </summary>
+                                        <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
+                                            {faq.answer}
+                                        </div>
+                                    </details>
+                                ))}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <CTABanner
+        title="Still have questions?"
+        description="Our team is here to help you 24/7. Whether you're planning a move or already on the road, we've got your back."
+        primaryButtonText="Contact Support"
+        primaryButtonHref="/contact-us"
+        className="pt-0"
+    />
+</BaseLayout>

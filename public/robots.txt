@@ -1,0 +1,10 @@
+# robots.txt for www.haulco.com
+User-agent: *
+Allow: /
+
+# Disallow admin or internal pages if any
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://www.haulco.com/sitemap-index.xml
+Sitemap: https://www.haulco.com/sitemap-0.xml

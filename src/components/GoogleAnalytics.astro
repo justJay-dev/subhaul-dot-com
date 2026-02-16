@@ -1,0 +1,22 @@
+---
+// Google Analytics component for Astro
+const GA_TRACKING_ID = import.meta.env.PUBLIC_GA_TRACKING_ID;
+const isProduction = import.meta.env.PROD;
+const shouldLoadGA = GA_TRACKING_ID && GA_TRACKING_ID !== '' && isProduction;
+---
+
+{shouldLoadGA && (
+  <>
+    <!-- Google tag (gtag.js) -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
+    <script is:inline define:vars={{ GA_TRACKING_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', GA_TRACKING_ID, {
+        allow_ad_personalization_signals: true,
+        allow_google_signals: true,
+      });
+    </script>
+  </>
+)}

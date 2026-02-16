@@ -1,0 +1,85 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import CTABanner from '@/components/CTABanner.astro';
+import SummarySection from '@/components/SummarySection.astro';
+
+interface Props {
+    title: string;
+    highlightedText?: string;
+    description: string;
+    summaryTitle: string;
+    summaryText: string;
+    summaryImage: string;
+    features: {
+        title: string;
+        description: string;
+        icon?: string;
+    }[];
+}
+
+const { title, highlightedText, description, summaryTitle, summaryText, summaryImage, features } =
+    Astro.props;
+---
+
+<BaseLayout title={`${title} | HaulCo`}>
+    <PageHero
+        title={title}
+        highlightedText={highlightedText}
+        description={description}
+        maxWidth="max-w-6xl"
+    />
+
+    <SummarySection title={summaryTitle} text={summaryText} image={summaryImage} imageAlt={title} />
+
+    <!-- Highlighted Features Section -->
+    <section class="py-24 bg-muted/50 border-y border-border">
+        <div class="container max-w-6xl">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold mb-4">Why Choose Our {title}?</h2>
+                <p class="text-muted-foreground text-lg">
+                    We combine professional expertise with cutting-edge technology to deliver a
+                    superior moving experience.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {
+                    features.map((feature) => (
+                        <div class="bg-card p-8 rounded-2xl border border-border shadow-sm">
+                            <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
+                                {feature.icon ? (
+                                    <Fragment set:html={feature.icon} />
+                                ) : (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                )}
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">{feature.title}</h3>
+                            <p class="text-muted-foreground leading-relaxed">
+                                {feature.description}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <CTABanner
+        title={`Ready to start your ${title.toLowerCase()}?`}
+        secondaryButtonText="Speak with an Expert"
+        secondaryButtonHref="/contact-us"
+    />
+</BaseLayout>

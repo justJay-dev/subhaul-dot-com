@@ -1,13 +1,18 @@
 dev:
 	bun run dev
+
 build:
 	bun run build
+
 preview:
 	bun run preview
+
 format:
 	bun run format
+
 wordpress-up:
 	docker compose -f wordpress-docker-compose.yml up -d
+
 test:
 	bun run scripts/test-indexing-guards.ts
 
@@ -19,6 +24,8 @@ ship-dev:
 	@echo "Patching complete!"
 	@echo "Building..."
 	bash build-and-deploy.sh arm-07.velociraptor-opah.ts.net
+	@echo "Running indexing guard tests against dev environment..."
+	bun run scripts/test-indexing-guards.ts
 
 ship-prod:
 	@echo "Running TSC to confirm this will build..."
@@ -28,3 +35,5 @@ ship-prod:
 	@echo "Patching complete!"
 	@echo "Building..."
 	bash build-and-deploy.sh arm-11.velociraptor-opah.ts.net
+	@echo "Running indexing guard tests against prod environment..."
+	bun run scripts/test-indexing-guards.ts

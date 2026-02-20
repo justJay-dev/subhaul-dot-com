@@ -57,7 +57,7 @@ const benefits = [
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {
                             benefits.map((benefit) => (
-                                <div class="bg-card p-8 rounded-2xl border border-border shadow-sm">
+                                <div class="bg-lander-dark p-8 rounded-2xl border border-border shadow-sm">
                                     <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
                                         {benefit.icon ? (
                                             <Fragment set:html={benefit.icon} />
@@ -78,10 +78,10 @@ const benefits = [
                                             </svg>
                                         )}
                                     </div>
-                                    <h3 class="text-xl font-bold mb-3">{benefit.title}</h3>
-                                    <p class="text-muted-foreground leading-relaxed">
-                                        {benefit.description}
-                                    </p>
+                                    <h3 class="text-xl font-bold mb-3 text-white">
+                                        {benefit.title}
+                                    </h3>
+                                    <p class="text-white leading-relaxed">{benefit.description}</p>
                                 </div>
                             ))
                         }
@@ -91,6 +91,7 @@ const benefits = [
                     title="Ready to join our network?"
                     description="Apply today to become a Haul certified carrier and start receiving jobs in your area."
                     primaryButtonText="Become a Carrier"
+                    primaryButtonHref={`${import.meta.env.PUBLIC_SP_UI_URL}/onboarding`}
                 />
             </div>
         </section>

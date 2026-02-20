@@ -13,7 +13,7 @@ const {
     title = 'Ready to start your move?',
     description = 'Get an instant, transparent quote in less than 2 minutes. No hidden fees, no stress.',
     primaryButtonText = 'Get My Instant Quote',
-    primaryButtonHref = '/book-a-move',
+    primaryButtonHref = 'https://app.subhaul.dev/onboarding',
     secondaryButtonText,
     secondaryButtonHref,
     className = '',
@@ -23,7 +23,7 @@ const {
 <section class={`py-24 ${className}`}>
     <div class="container max-w-6xl">
         <div
-            class="bg-card border border-border rounded-[2.5rem] p-8 md:p-16 text-center relative overflow-hidden shadow-xl"
+            class="bg-lander-dark border border-border rounded-[2.5rem] p-8 md:p-16 text-center relative overflow-hidden shadow-xl"
         >
             <!-- Decorative background elements -->
             <div
@@ -36,10 +36,10 @@ const {
             </div>
 
             <div class="relative z-10">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">
                     {title}
                 </h2>
-                <p class="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                <p class="text-xl text-white mb-10 max-w-2xl mx-auto">
                     {description}
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">

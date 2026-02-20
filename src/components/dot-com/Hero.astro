@@ -6,7 +6,7 @@
     class="hero-always-dark dark w-full flex items-center justify-center py-20 md:py-32 min-h-[60vh] px-4"
 >
     <div
-        class="md:p-12 max-w-4xl mx-auto bg-card border border-border rounded-[2.5rem] p-8 md:p-16 text-center relative overflow-hidden shadow-xl"
+        class="md:p-12 max-w-4xl mx-auto bg-lander-dark border border-border rounded-[2.5rem] p-8 md:p-16 text-center relative overflow-hidden shadow-xl"
     >
         <!-- Decorative background elements -->
         <div
@@ -24,15 +24,15 @@
                 <span class="inline text-primary bg-clip-text">Grow your fleet with Haul.</span>
             </h1>
 
-            <p class="text-xl text-foreground md:w-10/12 mx-auto lg:mx-0">
+            <p class="text-xl text-white md:w-10/12 mx-auto lg:mx-0">
                 We're looking for professional, reliable carriers to join our elite network. By
                 partnering with Haul, you gain access to a massive pool of customers, advanced
                 logistics tools, and a support team dedicated to your success.
             </p>
-            <p class="text-xl text-foreground md:w-10/12 mx-auto lg:mx-0">
+            <p class="text-xl text-white md:w-10/12 mx-auto lg:mx-0">
                 We handle the sales and technology, so you can focus on what you do best: moving.
             </p>
-            <p class="text-xl text-foreground md:w-10/12 mx-auto lg:mx-0">
+            <p class="text-xl text-white md:w-10/12 mx-auto lg:mx-0">
                 <strong>
                     Apply today to become a Haul certified carrier and start receiving jobs in your
                     area.
@@ -41,7 +41,7 @@
 
             <div class="space-y-4 md:space-y-0 md:space-x-4">
                 <a
-                    href="/book-a-move"
+                    href={`${import.meta.env.PUBLIC_SP_UI_URL}/onboarding`}
                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/80 w-full md:w-auto md:min-w-fit px-8 py-3"
                     aria-label="Get started with Haul moving services"
                 >

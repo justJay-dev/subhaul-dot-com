@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "start": "astro dev",
     "format": "prettier --write .",
-    "generate:sitemap": "astro build"
+    "generate:sitemap": "astro build",
+    "test:indexing-guards": "bun run scripts/test-indexing-guards.ts"
   },
   "dependencies": {
     "@astrojs/react": "4.4.2",

@@ -8,6 +8,8 @@ format:
 	bun run format
 wordpress-up:
 	docker compose -f wordpress-docker-compose.yml up -d
+test:
+	bun run scripts/test-indexing-guards.ts
 
 ship-dev:
 	@echo "Running TSC to confirm this will build..."

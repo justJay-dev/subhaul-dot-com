@@ -13,7 +13,7 @@ pnpm install
 pnpm dev
 ```
 
-Now, you can open your browser and navigate to http://localhost:4321 to see the application running.
+Now, you can open your browser and navigate to http://localhost:4322 to see the application running.
 
 ## Features
 

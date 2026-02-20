@@ -190,3 +190,25 @@
     display: none;
   }
 }
+
+.hero-always-dark {
+  --background: 0 0% 9.0196%;
+  --foreground: 0 0% 89.8039%;
+  --card: 0 0% 14.902%;
+  --card-foreground: 0 0% 89.8039%;
+  --popover: 0 0% 14.902%;
+  --popover-foreground: 0 0% 89.8039%;
+  --primary: 37.6923 92.126% 50.1961%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 14.902%;
+  --secondary-foreground: 0 0% 89.8039%;
+  --muted: 0 0% 14.902%;
+  --muted-foreground: 0 0% 63.9216%;
+  --accent: 22.7273 82.5% 31.3725%;
+  --accent-foreground: 48 96.6387% 76.6667%;
+  --destructive: 0 84.2365% 60.1961%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 25.098%;
+  --input: 0 0% 25.098%;
+  --ring: 37.6923 92.126% 50.1961%;
+}

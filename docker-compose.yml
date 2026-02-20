@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        SEARCH_ENGINE_NOINDEX: ${SEARCH_ENGINE_NOINDEX:-false}
     ports:
       - "4322:4322"
     restart: unless-stopped
